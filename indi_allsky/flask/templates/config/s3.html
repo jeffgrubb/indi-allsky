@@ -172,7 +172,7 @@
                 </div>
 
                 <!-- TLS, Cert Bypass & Asset Toggles Grid -->
-                <div class="tw:grid tw:grid-cols-1 sm:tw:grid-cols-2 md:tw:grid-cols-4 tw:gap-4 tw:pt-2">
+                <div class="tw:grid tw:grid-cols-1 sm:tw:grid-cols-2 lg:tw:grid-cols-5 tw:gap-4 tw:pt-2">
                     <div class="tw:flex tw:items-center tw:justify-between tw:p-3 tw:bg-base-100 tw:rounded-[var(--radius-box)] tw:border tw:border-base-300">
                         <span class="tw:text-[0.625rem] tw:font-bold tw:uppercase tw:tracking-wider tw:text-base-content/80">{{ form_config.S3UPLOAD__TLS.label.text }}</span>
                         {{ form_config.S3UPLOAD__TLS(class='tw:toggle tw:toggle-primary tw:toggle-sm') }}
@@ -182,6 +182,14 @@
                         <span class="tw:text-[0.625rem] tw:font-bold tw:uppercase tw:tracking-wider tw:text-base-content/80">{{ form_config.S3UPLOAD__CERT_BYPASS.label.text }}</span>
                         {{ form_config.S3UPLOAD__CERT_BYPASS(class='tw:toggle tw:toggle-primary tw:toggle-sm') }}
                         <div id="S3UPLOAD__CERT_BYPASS-error" class="tw:text-error tw:text-xs tw:mt-1" style="display: none;"></div>
+                    </div>
+                    <div class="tw:flex tw:flex-col tw:gap-1 tw:p-3 tw:bg-base-100 tw:rounded-[var(--radius-box)] tw:border tw:border-base-300">
+                        <div class="tw:flex tw:items-center tw:justify-between tw:gap-2">
+                            <span class="tw:text-[0.625rem] tw:font-bold tw:uppercase tw:tracking-wider tw:text-base-content/80">{{ form_config.S3UPLOAD__TAG_OBJECTS.label.text }}</span>
+                            {{ form_config.S3UPLOAD__TAG_OBJECTS(class='tw:toggle tw:toggle-primary tw:toggle-sm') }}
+                        </div>
+                        <span class="tw:text-[0.625rem] tw:text-base-content/40">AWS boto3 only; requires s3:PutObjectTagging.</span>
+                        <div id="S3UPLOAD__TAG_OBJECTS-error" class="tw:text-error tw:text-xs tw:mt-1" style="display: none;"></div>
                     </div>
                     <div class="tw:flex tw:items-center tw:justify-between tw:p-3 tw:bg-base-100 tw:rounded-[var(--radius-box)] tw:border tw:border-base-300">
                         <span class="tw:text-[0.625rem] tw:font-bold tw:uppercase tw:tracking-wider tw:text-base-content/80">{{ form_config.S3UPLOAD__UPLOAD_FITS.label.text }}</span>

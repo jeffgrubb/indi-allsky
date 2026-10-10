@@ -13,6 +13,8 @@ import time
 import urllib3.exceptions
 import logging
 
+from ..s3_tags import build_object_tagging
+
 logger = logging.getLogger('indi_allsky')
 
 
@@ -85,7 +87,7 @@ class boto3_s3(GenericFileTransfer):
         key = kwargs['key']
         storage_class = kwargs['storage_class']
         acl = kwargs['acl']
-        #metadata = kwargs['metadata']
+        metadata = kwargs.get('metadata')
 
         local_file_p = Path(local_file)
 
@@ -118,6 +120,14 @@ class boto3_s3(GenericFileTransfer):
 
         if storage_class:
             extra_args['StorageClass'] = storage_class
+
+
+        if self.config.get('S3UPLOAD', {}).get('TAG_OBJECTS', False):
+            object_tagging = build_object_tagging(metadata)
+            if object_tagging:
+                extra_args['Tagging'] = object_tagging
+            else:
+                logger.warning('S3 object tagging enabled, but asset metadata has no known type')
 
 
         start = time.time()
@@ -210,4 +220,3 @@ class boto3_s3(GenericFileTransfer):
 
 
         logger.info('S3 object deleted: %s', key)
-

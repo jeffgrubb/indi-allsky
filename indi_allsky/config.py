@@ -568,6 +568,7 @@ class IndiAllSkyConfigBase(object):
             "STORAGE_CLASS"          : "STANDARD",
             "TLS"                    : True,
             "CERT_BYPASS"            : False,
+            "TAG_OBJECTS"            : False,
             "UPLOAD_FITS"            : False,
             "UPLOAD_RAW"             : False,
         },
@@ -1871,4 +1872,3 @@ class IndiAllSkyConfigUtil(IndiAllSkyConfig):
         db.session.commit()
 
         return system_user
-

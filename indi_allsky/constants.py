@@ -19,6 +19,27 @@ MINI_VIDEO      = 16
 DB_BACKUP       = 17
 
 
+ASSET_TYPE_NAMES = {
+    CAMERA          : 'camera',
+    IMAGE           : 'image',
+    VIDEO           : 'video',
+    KEOGRAM         : 'keogram',
+    STARTRAIL       : 'startrail',
+    STARTRAIL_VIDEO : 'startrail_video',
+    RAW_IMAGE       : 'raw_image',
+    FITS_IMAGE      : 'fits_image',
+    USER            : 'user',
+    DARK_FRAME      : 'dark_frame',
+    BPM_FRAME       : 'bpm_frame',
+    METADATA        : 'metadata',
+    PANORAMA_IMAGE  : 'panorama_image',
+    PANORAMA_VIDEO  : 'panorama_video',
+    THUMBNAIL       : 'thumbnail',
+    MINI_VIDEO      : 'mini_video',
+    DB_BACKUP       : 'db_backup',
+}
+
+
 ENDPOINT_V1 = {
     CAMERA          : 'sync/v1/camera',
     IMAGE           : 'sync/v1/image',
@@ -485,4 +506,3 @@ INDISERVER_GPS_MAP = {
     'indi_gpsnmea'          : 'GPSd NEMA',
     'indi_simulator_gps'    : 'GPS Simulator',
 }
-

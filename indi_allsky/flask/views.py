@@ -2963,6 +2963,7 @@ class ConfigView(FormView):
             'S3UPLOAD__ACL'                  : self.indi_allsky_config.get('S3UPLOAD', {}).get('ACL', ''),
             'S3UPLOAD__TLS'                  : self.indi_allsky_config.get('S3UPLOAD', {}).get('TLS', True),
             'S3UPLOAD__CERT_BYPASS'          : self.indi_allsky_config.get('S3UPLOAD', {}).get('CERT_BYPASS', False),
+            'S3UPLOAD__TAG_OBJECTS'          : self.indi_allsky_config.get('S3UPLOAD', {}).get('TAG_OBJECTS', False),
             'S3UPLOAD__UPLOAD_FITS'          : self.indi_allsky_config.get('S3UPLOAD', {}).get('UPLOAD_FITS', False),
             'S3UPLOAD__UPLOAD_RAW'           : self.indi_allsky_config.get('S3UPLOAD', {}).get('UPLOAD_RAW', False),
             'MQTTPUBLISH__ENABLE'            : self.indi_allsky_config.get('MQTTPUBLISH', {}).get('ENABLE', False),
@@ -4042,6 +4043,7 @@ class AjaxConfigView(BaseView):
         self.indi_allsky_config['S3UPLOAD']['ACL']                      = str(request.json['S3UPLOAD__ACL'])
         self.indi_allsky_config['S3UPLOAD']['TLS']                      = bool(request.json['S3UPLOAD__TLS'])
         self.indi_allsky_config['S3UPLOAD']['CERT_BYPASS']              = bool(request.json['S3UPLOAD__CERT_BYPASS'])
+        self.indi_allsky_config['S3UPLOAD']['TAG_OBJECTS']              = bool(request.json['S3UPLOAD__TAG_OBJECTS'])
         self.indi_allsky_config['S3UPLOAD']['UPLOAD_FITS']              = bool(request.json['S3UPLOAD__UPLOAD_FITS'])
         self.indi_allsky_config['S3UPLOAD']['UPLOAD_RAW']               = bool(request.json['S3UPLOAD__UPLOAD_RAW'])
         self.indi_allsky_config['MQTTPUBLISH']['ENABLE']                = bool(request.json['MQTTPUBLISH__ENABLE'])
@@ -15008,4 +15010,3 @@ def manifest():
     response = jsonify(manifest_data)
     response.headers['Content-Type'] = 'application/manifest+json'
     return response
-
